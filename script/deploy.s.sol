@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.25;
 
-import { Script, console } from "forge-std/Script.sol";
+import { Script } from "forge-std/Script.sol";
+import { console } from "forge-std/console.sol";
 import { ExampleSolver } from "../src/ExampleSolver.sol";
 
 contract DeployScript is Script {
@@ -12,14 +13,18 @@ contract DeployScript is Script {
     function setUp() public { }
 
     function run() public {
-        // Retrieve deployer private key from environment
-        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        // Get deployer address for logging
+        address deployer = msg.sender;
+        console.log("Deploying from:", deployer);
 
         // Start broadcasting transactions
-        vm.startBroadcast(deployerPrivateKey);
+        vm.startBroadcast();
 
         // Deploy ExampleSolver
-        ExampleSolver solver = new ExampleSolver(WMATIC, ATLAS);
+        ExampleSolver solver = new ExampleSolver(
+            WMATIC, // Using WMATIC instead of WETH for Polygon
+            ATLAS
+        );
 
         console.log("ExampleSolver deployed at:", address(solver));
 
