@@ -3,7 +3,8 @@ pragma solidity 0.8.25;
 
 import { Script } from "forge-std/Script.sol";
 import { console } from "forge-std/console.sol";
-import { ExampleSolver } from "../src/ExampleSolver.sol";
+import { AtlasDirectSolver } from "../src/AtlasDirectSolver.sol";
+import { AtlasProxySolver } from "../src/AtlasProxySolver.sol";
 
 contract DeployScript is Script {
     // Default addresses - should be overridden with actual addresses for different networks
@@ -20,13 +21,13 @@ contract DeployScript is Script {
         // Start broadcasting transactions
         vm.startBroadcast();
 
-        // Deploy ExampleSolver
-        ExampleSolver solver = new ExampleSolver(
+        // Deploy DirectSolver
+        AtlasDirectSolver solver = new AtlasDirectSolver(
             WMATIC, // Using WMATIC instead of WETH for Polygon
             ATLAS
         );
 
-        console.log("ExampleSolver deployed at:", address(solver));
+        console.log("DirectSolver deployed at:", address(solver));
 
         vm.stopBroadcast();
     }

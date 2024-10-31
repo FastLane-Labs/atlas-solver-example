@@ -2,13 +2,13 @@
 pragma solidity 0.8.25;
 
 import { Test } from "forge-std/Test.sol";
-import { ExampleSolver } from "../src/ExampleSolver.sol";
+import { AtlasDirectSolver } from "../src/AtlasDirectSolver.sol";
 import { IERC20 } from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import { MockERC20 } from "./mocks/MockERC20.sol";
 import { Ownable } from "openzeppelin-contracts/contracts/access/Ownable.sol";
 
-contract ExampleSolverTest is Test {
-    ExampleSolver public solver;
+contract AtlasDirectSolverTest is Test {
+    AtlasDirectSolver public solver;
     address public constant WETH = address(0x1);
     address public constant ATLAS = address(0x2);
     address public owner;
@@ -22,7 +22,7 @@ contract ExampleSolverTest is Test {
         user = makeAddr("user");
 
         vm.startPrank(owner);
-        solver = new ExampleSolver(WETH, ATLAS);
+        solver = new AtlasDirectSolver(WETH, ATLAS);
         testToken = new MockERC20("Test Token", "TEST");
         vm.stopPrank();
 

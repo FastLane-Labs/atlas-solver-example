@@ -8,7 +8,7 @@ import { IERC20 } from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol"
 import { SolverBase } from "../lib/atlas/src/contracts/solver/SolverBase.sol";
 
 /**
- * @title ExampleSolver
+ * @title AtlasDirectSolver
  * @notice A simple example solver contract that inherits from SolverBase
  * @dev SolverBase is a helper contract that:
  * 1. Implements ISolverContract interface required for all solvers
@@ -19,7 +19,7 @@ import { SolverBase } from "../lib/atlas/src/contracts/solver/SolverBase.sol";
  *    - Proper reconciliation of funds with Atlas escrow
  * 4. Manages WETH/ETH conversions as needed for bid payments
  */
-contract ExampleSolver is SolverBase, Ownable {
+contract AtlasDirectSolver is SolverBase, Ownable {
     bool internal s_shouldSucceed;
 
     constructor(address weth, address atlas) SolverBase(weth, atlas, msg.sender) Ownable(msg.sender) {
