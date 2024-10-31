@@ -2,10 +2,10 @@
 
 pragma solidity 0.8.25;
 
-import {SafeTransferLib} from "solady/utils/SafeTransferLib.sol";
-import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
-import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
-import {SolverBase} from "../lib/atlas/src/contracts/solver/SolverBase.sol";
+import { SafeTransferLib } from "solady/utils/SafeTransferLib.sol";
+import { Ownable } from "openzeppelin-contracts/contracts/access/Ownable.sol";
+import { IERC20 } from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import { SolverBase } from "../lib/atlas/src/contracts/solver/SolverBase.sol";
 
 /**
  * @title ExampleSolver
@@ -26,8 +26,8 @@ contract ExampleSolver is SolverBase, Ownable {
         s_shouldSucceed = true; // should succeed by default, can be set to false
     }
 
-    fallback() external payable {}
-    receive() external payable {}
+    fallback() external payable { }
+    receive() external payable { }
 
     // Called during the SolverOperation phase
     // This function is called by atlasSolverCall() which forwards the solverOpData calldata
